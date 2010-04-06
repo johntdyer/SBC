@@ -6,6 +6,7 @@ include 'functions.inc'; ?>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/view.css" media="all" />
+		
 		<script type="text/javascript" src="js/view.js"></script>
 			<link rel="stylesheet" href="css/mediaboxAdvBlack.css" type="text/css" media="screen"/>
 
