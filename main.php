@@ -34,20 +34,17 @@
 <script type="text/javascript" src="js/instantEdit.js"></script>
 </head>
 		<body>
-		
 		<script>
 			var cookieUsername = Cookie.read("VoxeoSBCusername");
 			var cookiePassword = Cookie.read("VoxeoSBCpassword");
 		</script>	
 		<?
-		
 			if (isset($_COOKIE['VoxeoSBCusername']) && isset($_COOKIE['VoxeoSBCpassword'])) {			
 				if(!(checkUsername($_POST['username'])) || !(checkPassword($_POST['password']))){
 			        echo('<script>redirectHome("Invalid Password");</script>');		
 			    } else {
-				
 				}
-				?>			
+				?>
 			<table cellpadding="1" cellspacing="10" border="0" id="header">
 				<tr>
 				<td>	
@@ -115,9 +112,7 @@
 <?	}	?>
 	</tbody>
   </table>
-
 	<div id="controls">	
-			
 		<div id="perpage">
 			<select onchange="sorter.size(this.value)">
 			<option value="5">5</option>
@@ -139,7 +134,6 @@
 		</div>
 		<div id="text">Displaying Page <span id="currentpage"></span> of <span id="pagelimit"></span>
 			</div>
-		
 	</div>
 	<script type="text/javascript" src="js/scriptSort.js"></script>
 	
