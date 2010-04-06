@@ -47,9 +47,7 @@
 			    } else {
 				
 				}
-				?>	
-		
-			
+				?>			
 			<table cellpadding="1" cellspacing="10" border="0" id="header">
 				<tr>
 				<td>	
