@@ -7,11 +7,9 @@
 		<script type="text/javascript" charset="utf-8">
 			function closeAndRefresh(){
 				parent.Mediabox.closerefresh();
-//				window.location = 'main.php';
 				return false;
 			}
 		</script>
-		
 		<?php
 		function redirectHome($msg){
 		?>
