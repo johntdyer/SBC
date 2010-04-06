@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <vxml version="2.1">
+
+  <form id="Form1">
+	<log expr="'@@@@@ REJECT ' "/>
+	<prompt>Sorry you you are not authorized to call this application</prompt>
+	<disconnect />
+  </form>
+</vxml>
