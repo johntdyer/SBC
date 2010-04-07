@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <vxml version="2.1">
+
+  <form id="Form1">
+	<log expr="'@@@@@ ERROR ' "/>
+	<prompt>Sorry we are having an error, please try again at a later time</prompt>
+	<disconnect />
+  </form>
+</vxml>
