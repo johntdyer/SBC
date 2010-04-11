@@ -127,38 +127,53 @@
 		
 		<transition event="error.*">
 			<log expr="'An error has occured (' + event$.reason + ').  Exiting application.'"/>
-			<send name="'LOG_APPLICATION_ERROR'" target="session.id"/>			
+			<send name="'LOG_APPLICATION_ERROR'" target="session.id"/>
 		</transition>
 		
 <!-- THIS IS WHERE YOU WOULD LOG RESULTS -->
 
 				
 		<transition event="LOG_CALL_REDIRECT">
+			<assign name="stateVar" expr="'postCallCleanUp'"/>
 			<var name="callDisposition" expr="'Redirected'"/>
 			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
-			<exit/>
+			<send target="'../utilities/logCatcher.php'" name="'http.get'" delay="'250ms'" targettype="'basichttp'" namelist="sessionID callerID callDisposition myDate"/>
 		</transition>
 		
 		<transition event="LOG_CALL_REJECTED">
+			<assign name="stateVar" expr="'postCallCleanUp'"/>
 			<var name="callDisposition" expr="'Rejected'"/>
-			
 			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
-			<exit/>
+			<send target="'../utilities/logCatcher.php'" name="'http.get'" delay="'250ms'" targettype="'basichttp'" namelist="sessionID callerID callDisposition myDate"/>
 		</transition>
 		
 		<transition event="LOG_CALL_ERROR">
+			<assign name="stateVar" expr="'postCallCleanUp'"/>
 			<var name="callDisposition" expr="'Error'"/>
 			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
-			<exit/>
+			<send target="'../utilities/logCatcher.php'" name="'http.get'" delay="'250ms'" targettype="'basichttp'" namelist="sessionID callerID callDisposition myDate"/>
 		</transition>
 		
 		<transition event="LOG_APPLICATION_ERROR">
+			<assign name="stateVar" expr="'postCallCleanUp'"/>
 			<var name="callDisposition" expr="'Error'"/>
 			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
-			<exit/>
+			<send target="'../utilities/logCatcher.php'" name="'http.get'" delay="'250ms'" targettype="'basichttp'" namelist="sessionID callerID callDisposition myDate"/>
 		</transition>
 		
+		  <transition event="send.SUCCESSFUL" state="postCallCleanUp">
+				<log expr="'@@@@: SEDNING USER.GOODBYE'"/>
+				<send name="'USER.GOODBYE'" target="session.id" targettype="'ccxml'" delay="'250ms'"/>
+		 </transition>
+	  
 		
+		<transition event="USER.GOODBYE" state="postCallCleanUp">
+			<log expr="'@'"/><log expr="'@@'"/><log expr="'@@@'"/><log expr="'@@@@'"/>
+			<log expr="'---------- POST CALL SEND COMPLETE ----------'"/>
+			<log expr="'@@@@'"/><log expr="'@@@'"/><log expr="'@@'"/><log expr="'@'"/>
+			<exit/>
+    </transition>
+
 		<transition event="send.successful"/>
 		
 	</eventprocessor>
