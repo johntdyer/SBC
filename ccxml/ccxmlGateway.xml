@@ -134,22 +134,27 @@
 
 				
 		<transition event="LOG_CALL_REDIRECT">
-			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID"/>
+			<var name="callDisposition" expr="'Redirected'"/>
+			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
 			<exit/>
 		</transition>
 		
 		<transition event="LOG_CALL_REJECTED">
-			<log expr="'@@@@@@ REJECTING CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID"/>
+			<var name="callDisposition" expr="'Rejected'"/>
+			
+			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
 			<exit/>
 		</transition>
 		
 		<transition event="LOG_CALL_ERROR">
-			<log expr="'@@@@@@ ERROR CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID"/>			
+			<var name="callDisposition" expr="'Error'"/>
+			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
 			<exit/>
 		</transition>
 		
 		<transition event="LOG_APPLICATION_ERROR">
-			<log expr="'@@@@@@ ERROR CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Reason: ' + event$.reason'"/>			
+			<var name="callDisposition" expr="'Error'"/>
+			<log expr="'@@@@@@ REDIRECTED CALL - Time[Epoch]: ' + myDate + ' - SessionID: ' + sessionID + ' - CallerID: ' + callerID + ' - Call Disposition: ' + callDisposition"/>
 			<exit/>
 		</transition>
 		
