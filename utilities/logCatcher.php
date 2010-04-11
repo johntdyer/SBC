@@ -1,4 +1,6 @@
 <?
+include('../functions.inc');
+cleanLogDir(30,'*.txt','../../../../logs/vcs/');
 date_default_timezone_set('GMT');
 
 $myFile 		=	"../logs/LOGS__".date('Y-m-d-H00').".csv";
