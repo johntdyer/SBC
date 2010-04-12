@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<callxml version="3.0">
+	<!-- This script simulates a caller doling something which would take 30 seconds -->
+	<do>
+		<log expr="'@@@@Call Answered, waiting 30 seconds ' "/>
+		<wait value="20s"/>
+		<prompt value="We have waited 30 seconds, now time to hangup"/>
+		<exit/>
+	</do>
+</callxml>
