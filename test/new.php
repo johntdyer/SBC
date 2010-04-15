@@ -41,9 +41,9 @@
 			</div>
 		</div>		
 		</form>
-		<script src="../jQuery.js" type="text/javascript" charset="utf-8"></script>
-		<script src="jquery.valid8-1.2.js" type="text/javascript" charset="utf-8"></script>
-		<script src="jquery.accordion-1.2.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-1.3.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.valid8-1.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.accordion-1.2.2.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('ul').accordion();
