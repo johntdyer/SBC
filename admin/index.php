@@ -2,16 +2,13 @@
 <html>
 	<head>
 		<script type="text/javascript" src="../js/instantEdit_ADMIN.js"></script>
-		
 		<script src="../js/jquery2.js" type="text/javascript"></script>
 		<script src="../js/ui.core.js" type="text/javascript"></script>
-        
 		<!-- optional for High Contrast Mode Support -->
 		<script src="../js/jquery.usermode.js" type="text/javascript"></script>
 		
 		<script src="../js/jquery.bind.js" type="text/javascript"></script>
 		<script src="../js/ui.checkbox.js" type="text/javascript"></script>
-        
         <style type="text/css">
              {
 							padding: 0;
@@ -21,10 +18,10 @@
 							font-family: Arial, Helvetica, sans-serif;
 						}
 						#wrapper {
-						    width: 20em;
-						    margin: 10px auto;
-						    padding: 10px;
-						    border: 1px solid #000;
+							width: 30em;
+							margin: 10px auto;
+							padding: 10px;
+							border: 1px solid #000;
 						}
 			.ui-radio-state-disabled,
 			.ui-radio-state-checked-disabled,
@@ -83,17 +80,16 @@
 			}
 			
 			fieldset {
-				padding: 10px;
+				padding: 20px;
 				color: #fff;
 				background: #0F1316;
 			}
-			
 			.ui-helper-hidden-accessible {
 				position: absolute;
 				left: -999em;
 			}
 			table {
-				margin: 10px 0;
+				margin: 5px 0;
 				border-collapse: collapse;
 				width: 100%;
 			}
@@ -117,26 +113,19 @@
 			</script>
 		<?
 		}
-
 		if (isset($_COOKIE['VoxeoSBCusername']) && isset($_COOKIE['VoxeoSBCpassword'])) {
 			if((checkUsername($_COOKIE['VoxeoSBCusername'])) || (checkPasswordSha1($_COOKIE['VoxeoSBCpassword']))){
-		
 		?>
-		
-
-
 		<script type="text/javascript">
 		function closeAndRefresh(){
 			parent.Mediabox.closerefresh();
 			return false;
 		}
 		function displayHidden(v) {
-
 			if(v=='rejectURL'){
 				document.getElementById("a_rejectRedirectURL").style.display = "block"
 				document.getElementById("a_acceptRedirectURL").style.display = "none"				
-	    	setBusyValue(false);			
-				
+	    	setBusyValue(false);
 			}else if(v=='acceptURL'){
     	document.getElementById("a_rejectRedirectURL").style.display = "none"	
 			document.getElementById("a_acceptRedirectURL").style.display = "block"
@@ -149,7 +138,6 @@
 		//		alert("This will reject any matches with a fast busy");
 			}
 		}
-		
 		function setBusyValue(v){
 			if(v==true){
 				$.post("updateURL.php",{rejectWithBusy: "true"});
@@ -158,31 +146,32 @@
 			}
 		}		
 		</script>
-		
 	</head>
 	<body>
 		<div id="wrapper">
 			<form action="#">
 				<fieldset>
-					<div><input name="radio" id="c4" type="radio" onclick="displayHidden('rejectURL');"/> <label for="c4">Reject Matches&nbsp;(RecectURL)</label></div>
-					<div><input name="radio" id="c5" type="radio" onclick="displayHidden('busy');"/> <label for="c5">Reject Matches&nbsp;&nbsp;(Busy [SIP/603])</label></div>
+					<div><input name="radio" id="c4" type="radio" onclick="displayHidden('rejectURL');"/> <label for="c4">Reject Matches&nbsp;(RecectURL)</label></div><br>
+					<div><input name="radio" id="c5" type="radio" onclick="displayHidden('busy');"/> <label for="c5">Reject Matches&nbsp;&nbsp;(Busy [SIP/603])</label></div><br>
 					<div><input name="radio" id="c6" type="radio" onclick="displayHidden('acceptURL');"/> <label for="c6">Accept Matches&nbsp;(AcceptURL)</label></div>
-					
-					<div id="change">		
+					<div id="change">
 						<span id="a_rejectRedirectURL" style="display: none" class="editText">
 							<? echo trim(getRedirectURL('reject'));	?>
 						</span>
-					</div>			
-				
-					<div id="change">			
+					</div>
+					<div id="change">
 						<span id="a_acceptRedirectURL" style="display: none" class="editText">
-							<? echo trim(getRedirectURL('accept'));	?>					
+							<? echo trim(getRedirectURL('accept'));	?>
 						</span>
 					</div>
 						<br/>
 						<input type="button" id="closeButton" name="closeButton" value="Close Window" style="display: block" onClick="closeAndRefresh();" class="element" />
 					</fieldset>
-		 			
+					<fieldset>
+						<input type="password" name="oldPass"/>
+												<input type="password" name="oldPass"/>
+																		<input type="password" name="oldPass"/>
+					</fieldset>
 			</form>
 			<script type="text/javascript">
 			setVarsForm("pageID=profileEdit&userID=<?echo $id;?>&sessionID=<? echo id; ?>");
