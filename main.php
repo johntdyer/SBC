@@ -15,7 +15,8 @@
 		?>
 			<script>
 				alert("<? echo $msg;?>");
-				window.location="http://127.0.0.1:9990/SBC/authUser.php";
+			//	window.location="http://127.0.0.1:9990/SBC/authUser.php";
+				window.location="/SBC/authUser.php";
 			</script>
 		<?
 		}
@@ -37,9 +38,11 @@
 			var cookiePassword = Cookie.read("VoxeoSBCpassword");
 		</script>	
 		<?
+
 			if (isset($_COOKIE['VoxeoSBCusername']) && isset($_COOKIE['VoxeoSBCpassword'])) {			
-				if(!(checkUsername($_COOKIE['VoxeoSBCusername'])) || !(checkPassword($_COOKIE['VoxeoSBCpassword']))){
-			        echo('<script>redirectHome("Invalid Password");</script>');		
+				if(!(checkUsername($_COOKIE['VoxeoSBCusername'])) || !(checkPasswordSha1($_COOKIE['VoxeoSBCpassword']))){
+					//echo('<script>redirectHome("Invalid Password");</script>');		
+					redirectHome("Invalid Password");
 			    } else {
 				}
 				?>
@@ -153,7 +156,8 @@
 setVarsForm("pageID=profileEdit&userID=<?echo $id;?>&sessionID=<?echo $rowx['id'];?>");
 </script><?
 	} else {
-		echo('<script>redirectHome("Nothing provided Password");</script>');
+		//	echo('<script>redirectHome("Nothing provided Password");</script>');
+		redirectHome("Nothing provided Password");
 	}
 	?>
 </body>
