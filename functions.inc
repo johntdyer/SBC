@@ -1,4 +1,11 @@
 <?
+
+
+error_reporting(0);
+
+
+
+
 $dbname='database.SQlite.db';
 $appDir = "SBC";
 
@@ -266,16 +273,21 @@ function setOnANIMatchCondition($i){
 		}
 	}
 
-	function setPassword($input){
+	function setPassword($oldPassword,$newPassword){
 		global $dbname, $dbPath;
-		$dbhandle = sqlite_open($dbPath);
-		$sql = "UPDATE data SET value='". $input . "' WHERE id='pass'";
-		$results = sqlite_query($dbhandle, $sql, $error);
-				if (!$results){	
-						return 0;
-					}else{
-						return 1;
-				}
+		$error = null;
+		if((checkPassword($oldPassword))){
+			$dbhandle = sqlite_open($dbPath);
+			$sql = "UPDATE data SET value='". $newPassword . "' WHERE id='pass'";
+			$results = sqlite_query($dbhandle, $sql, $error);
+			if (!$results){	
+				return 0;
+			}else{
+				return 1;
+			}	
+		}else
+		//return error code
+		return "error";
 	}	
 		
 		
@@ -293,6 +305,7 @@ function setOnANIMatchCondition($i){
 					return 0;
 				}
 		}
+
 	function checkPassword($comparator){
 			global $dbname, $dbPath;
 			$dbhandle = sqlite_open($dbPath);
@@ -316,8 +329,7 @@ function setOnANIMatchCondition($i){
 			while (sqlite_has_more($query)) {
 						$old = sqlite_fetch_single($query);
 					}
-			if ($old==$comparator){
-			
+			if ($old==$comparator){	
 				return 1;
 			} else{
 		
