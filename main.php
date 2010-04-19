@@ -38,7 +38,7 @@
 		</script>	
 		<?
 			if (isset($_COOKIE['VoxeoSBCusername']) && isset($_COOKIE['VoxeoSBCpassword'])) {			
-				if(!(checkUsername($_POST['username'])) || !(checkPassword($_POST['password']))){
+				if(!(checkUsername($_COOKIE['VoxeoSBCusername'])) || !(checkPassword($_COOKIE['VoxeoSBCpassword']))){
 			        echo('<script>redirectHome("Invalid Password");</script>');		
 			    } else {
 				}
@@ -125,7 +125,7 @@
 			<img src="images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
 			<img src="images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
 			<input type="image" src="images/add.gif"  width="16" height="16" onClick="Mediabox.open('addCaller.php', 'Add Caller', '450 500');"></a>
-			<input type="image" src="images/config-icon.png"  width="16" height="16" onClick="Mediabox.open('admin/index.html', 'Add Caller', '450 500');"></a>
+			<input type="image" src="images/config-icon.png"  width="16" height="16" onClick="Mediabox.open('admin/index.html', 'Add Caller', '450 600');"></a>
 
 			<img src="images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
 			<img src="images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
