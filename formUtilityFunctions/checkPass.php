@@ -23,7 +23,6 @@ else {
 
 function confirmPassword($password){
 	// Database look-up should go here here...
-	// But for the sake of this demo a random return will do
 	return checkPassword($password);
 }
 

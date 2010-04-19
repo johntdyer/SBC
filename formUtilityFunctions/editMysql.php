@@ -10,6 +10,11 @@ header("Pragma: no-cache"); // HTTP/1.0
 $dbname='database.SQlite.db';
 $appDir = "SBC";
 
+
+
+// Turn off all error reporting
+error_reporting(0);
+
 $root = getenv("DOCUMENT_ROOT");
 $dbPath = $root."/".$appDir."/db". "/". $dbname;
 
@@ -42,7 +47,7 @@ if ( ( $fieldname[0] == 'a' ) && ( $fieldname[1] == '_' ) ) {
 	}
 	
 $dbhandle = sqlite_open($dbPath);
-$results = sqlite_query($dbhandle, $query,$error);
+$results = sqlite_query($dbhandle,$query,$error);
 
 	if (!$results){	
 		echo "<b>Error:</b>  " . $error;	
