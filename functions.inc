@@ -290,21 +290,20 @@ function setOnANIMatchCondition($i){
 		return "error";
 	}	
 		
-		
-		function checkUsername($comparator){
-				global $dbname, $dbPath;
-				$dbhandle = sqlite_open($dbPath);
-				$sql = "SELECT value FROM data WHERE id='userName'";
-				$query = sqlite_query($dbhandle, $sql);
-				while (sqlite_has_more($query)) {
-							$old = sqlite_fetch_single($query);
-						}
-				if ($old==$comparator){
-					return 1;
-				} else{
-					return 0;
-				}
+	function checkUsername($comparator){
+		global $dbname, $dbPath;
+		$dbhandle = sqlite_open($dbPath);
+		$sql = "SELECT value FROM data WHERE id='userName'";
+		$query = sqlite_query($dbhandle, $sql);
+		while (sqlite_has_more($query)) {
+			$old = sqlite_fetch_single($query);
 		}
+		if ($old==$comparator){
+			return 1;
+		} else{
+			return 0;
+		}
+	}
 
 	function checkPassword($comparator){
 			global $dbname, $dbPath;
@@ -312,8 +311,8 @@ function setOnANIMatchCondition($i){
 			$sql = "SELECT value FROM data WHERE id='pass'";
 			$query = sqlite_query($dbhandle, $sql);
 			while (sqlite_has_more($query)) {
-						$old = sqlite_fetch_single($query);
-					}
+				$old = sqlite_fetch_single($query);
+			}
 			if ($old==sha1($comparator)){
 				return 1;
 			} else{
