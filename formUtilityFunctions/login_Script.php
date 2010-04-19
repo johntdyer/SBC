@@ -8,29 +8,29 @@
 	<?	function redirectHome($msg){?>
 				<script>
 					alert("<? echo $msg;?>");
-					window.location="http://127.0.0.1:9990/SBC/authUser.php";
+				//	window.location="http://127.0.0.1:9990/SBC/authUser.php";
+					window.location="../authUser.php";
 				</script><?
 			}
 			
-if(isset($_POST['username']) && isset($_POST['password'])){
+if(isset($_REQUEST['username']) && isset($_REQUEST['password'])){
 	if((checkUsername($_POST['username'])) && (checkPassword($_POST['password']))){
+
 		if(isset($_POST['rememberMe'])){	?>
 				<script type="text/javascript" charset="utf-8">
-				Cookie.write('VoxeoSBCpassword','<?php echo (sha1($_POST['password'])); ?>',{duration: 1, path: '/'});
-				Cookie.write('VoxeoSBCusername','<?php echo ($_POST['username']); ?>',{duration: 1,path: '/'});
-				
-				
-//				window.location="http://127.0.0.1:9990/SBC/main.php";
-parent.window.location.href='../main.php';
-				
+					Cookie.write('VoxeoSBCpassword','<?php echo (sha1($_POST['password'])); ?>',{duration: 1, path: '/'});
+					Cookie.write('VoxeoSBCusername','<?php echo ($_POST['username']); ?>',{duration: 1,path: '/'});
+					//window.location="http://127.0.0.1:9990/SBC/main.php";
+					parent.window.location.href='../main.php';
 				</script>
 			<?
-		}else{	?>
+		}else{	
+
+			?>
 			<script type="text/javascript" charset="utf-8">
 				Cookie.write('VoxeoSBCpassword','<?php echo (sha1($_POST['password'])); ?>',{path: '/'});
 				Cookie.write('VoxeoSBCusername','<?php echo ($_POST['username']); ?>',{path: '/'});
-				
-//				window.location="http://127.0.0.1:9990/SBC/main.php";
+				//window.location="http://127.0.0.1:9990/SBC/main.php";
 				parent.window.location.href='../main.php';
 			</script><?	
 		}
