@@ -6,9 +6,10 @@
 		<script src="../js/ui.core.js" type="text/javascript"></script>
 		<!-- optional for High Contrast Mode Support -->
 		<script src="../js/jquery.usermode.js" type="text/javascript"></script>
-		
 		<script src="../js/jquery.bind.js" type="text/javascript"></script>
 		<script src="../js/ui.checkbox.js" type="text/javascript"></script>
+		<script src="../js/jquery.valid8-1.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.accordion-1.2.2.js" type="text/javascript" charset="utf-8"></script>
         <style type="text/css">
              {
 							padding: 0;
@@ -72,6 +73,8 @@
 				 			});
 						});
 			</script>
+			
+			
 		<style>
 			form {
 				overflow: hidden;
@@ -166,24 +169,22 @@
 					</div>
 						<br/>
 						<input type="button" id="closeButton" name="closeButton" value="Close Window" style="display: block" onClick="closeAndRefresh();" class="element" />
+						</form>						
 					</fieldset>
 					<fieldset>
-						<input type="password" name="oldPass"/>
-												<input type="password" name="oldPass"/>
-																		<input type="password" name="oldPass"/>
+						<?include('password/password.php');?>
 					</fieldset>
-			</form>
 			<script type="text/javascript">
 			setVarsForm("pageID=profileEdit&userID=<?echo $id;?>&sessionID=<? echo id; ?>");
 			</script>
 			<?
 		} else {
-					?>
-					<script>
-						alert("Invalid Password");
-						parent.Mediabox.closerefresh();
-					</script>
-					<?
+			?>
+			<script>
+				alert("Invalid Password");
+				parent.Mediabox.closerefresh();
+			</script>
+			<?
 		}
 	}
 		?>
